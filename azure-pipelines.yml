@@ -4,6 +4,18 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
 trigger:
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Free Trial(a996c244-7ac8-4068-b989-1be78a7ed9cc)'
+    subscriptionId: 'a996c244-7ac8-4068-b989-1be78a7ed9cc'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'cpparasuram'
+    location: 'East US'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/Akshayp18/appservice/blob/main/template.json'
+    csmParametersFileLink: 'https://github.com/Akshayp18/appservice/blob/main/parameters.json'
+    deploymentMode: 'Incremental'
 - main
 
 pool:
